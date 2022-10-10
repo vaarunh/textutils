@@ -7,23 +7,27 @@ export default function TextForm(props) {
         console.log("Button Clicked - UpperCase");
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Text converted to uppercase.", "primary");
     }
 
     const lowerCase =() =>{
         console.log("Button Clicked - LowerCase");
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Text converted to lowecase.", "info");
     }
 
     const clearText =() =>{
       console.log("Button Clicked - Clear");
       let newText = " ";
       setText(newText);
+      props.showAlert("Text field successfully cleared.", "danger");
   }
 
   const copyText =() =>{
     console.log("Button Clicked - Copy");
     navigator.clipboard.writeText(text);
+    props.showAlert("Text copied to clipboard.", "warning");
 }
 
     const handleOnChange =(event) =>{
@@ -58,7 +62,9 @@ export default function TextForm(props) {
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>{text.split(" ").length}</td>
+      <td>{text.split(' ')
+            .filter(function(n) { return n != '' })
+            .length}</td>
       <td>Words Are Present In Your Text</td>
     </tr>
     <tr>

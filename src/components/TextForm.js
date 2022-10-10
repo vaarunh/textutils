@@ -4,16 +4,27 @@ import React, {useState} from 'react';
 
 export default function TextForm(props) {
     const upperCase =() =>{
-        console.log("Button Clicked");
+        console.log("Button Clicked - UpperCase");
         let newText = text.toUpperCase();
         setText(newText);
     }
 
     const lowerCase =() =>{
-        console.log("Button Clicked");
+        console.log("Button Clicked - LowerCase");
         let newText = text.toLowerCase();
         setText(newText);
     }
+
+    const clearText =() =>{
+      console.log("Button Clicked - Clear");
+      let newText = " ";
+      setText(newText);
+  }
+
+  const copyText =() =>{
+    console.log("Button Clicked - Copy");
+    navigator.clipboard.writeText(text);
+}
 
     const handleOnChange =(event) =>{
         setText(event.target.value);
@@ -23,17 +34,19 @@ export default function TextForm(props) {
     return (
         <>
         <div className="container">
-            <h2>{props.heading}</h2>
+            <h3 style={{color: props.mode==='light'?'#343a40':'#D8E9A8'}}>{props.heading}</h3>
             <div className="mb-3">
-                <textarea className="form-control" id="myBox" rows="9" value={text} onChange={handleOnChange}></textarea>
+                <textarea className="form-control mt-4" id="myBox" rows="9"value={text} onChange={handleOnChange}></textarea>
             </div>
             <button className="btn btn-primary mx-2" onClick={upperCase}>Convert to Uppercase</button>
             <button className="btn btn-info mx-2" onClick={lowerCase}>Convert to Lowercase</button>
+            <button className="btn btn-success mx-2" onClick={copyText}>Copy To Clipboard</button>
+            <button className="btn btn-danger mx-2" onClick={clearText} >Clear Text</button>
         </div>
-        <hr />
+        <hr style={{color: props.mode==='light'?'#343a40':'#D8E9A8'}} />
         <div className="container">
-            <h2> Your Text Summary</h2>
-            <table class="table table-bordered mt-4">
+            <h3 style={{color: props.mode==='light'?'#343a40':'#D8E9A8'}}> Your Text Summary</h3>
+            <table className="table table-bordered  mt-4" style={{color: props.mode==='light'?'#343a40':'#D8E9A8'}}>
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -62,9 +75,9 @@ export default function TextForm(props) {
     
   </tbody>
 </table>
-<hr/>
-<h3 className="mt-4">Preivew</h3>
-<div class="alert alert-info" role="alert">
+<hr style={{color: props.mode==='light'?'#343a40':'#D8E9A8'}}/>
+<h3 className="mt-4" style={{color: props.mode==='light'?'#343a40':'#D8E9A8'}}>Your Text Preivew</h3>
+<div class="alert alert-info mt-4" role="alert">
  {text}
 </div>
         </div>

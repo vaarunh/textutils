@@ -20,9 +20,10 @@ export default function TextForm(props) {
 
     const clearText =() =>{
       console.log("Button Clicked - Clear");
-      let newText = " ";
+      let newText = "";
       setText(newText);
       props.showAlert("Text field successfully cleared.", "danger");
+      
   }
 
   const copyText =() =>{
@@ -43,10 +44,10 @@ export default function TextForm(props) {
             <div className="mb-3">
                 <textarea className="form-control mt-4" id="myBox" rows="9"value={text} onChange={handleOnChange}></textarea>
             </div>
-            <button className="btn btn-primary mx-2" onClick={upperCase}>Convert to Uppercase</button>
-            <button className="btn btn-info mx-2" onClick={lowerCase}>Convert to Lowercase</button>
-            <button className="btn btn-success mx-2" onClick={copyText}>Copy To Clipboard</button>
-            <button className="btn btn-danger mx-2" onClick={clearText} >Clear Text</button>
+            <button className="btn btn-primary mx-2"  disabled={!text} onClick={upperCase}>Convert to Uppercase</button>
+            <button className="btn btn-info mx-2"  disabled={!text} onClick={lowerCase}>Convert to Lowercase</button>
+            <button className="btn btn-success mx-2"  disabled={!text} onClick={copyText}>Copy To Clipboard</button>
+            <button className="btn btn-danger mx-2" disabled={!text} id="clear" onClick={clearText} >Clear Text</button>
         </div>
         <hr style={{color: props.mode==='light'?'#343a40':'#D8E9A8'}} />
         <div className="container">
@@ -84,7 +85,7 @@ export default function TextForm(props) {
 </table>
 <hr style={{color: props.mode==='light'?'#343a40':'#D8E9A8'}}/>
 <h3 className="mt-4" style={{color: props.mode==='light'?'#343a40':'#D8E9A8'}}>Your Text Preivew</h3>
-<div class="alert alert-info mt-4" role="alert">
+<div className="alert alert-info mt-4" role="alert">
  {text}
 </div>
         </div>

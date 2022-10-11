@@ -15,6 +15,7 @@ export default function TextForm(props) {
         let newText = text.toLowerCase();
         setText(newText);
         props.showAlert("Text converted to lowecase.", "info");
+        
     }
 
     const clearText =() =>{

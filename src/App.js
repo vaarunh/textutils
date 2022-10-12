@@ -3,13 +3,12 @@ import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import About from './components/About';
+import Contact from './components/contact';
 import React, { useState } from 'react'
 import Alert from './components/Alert';
 import {
   BrowserRouter as Router,
-  Switch,
   Route, Routes,
-  Link
 } from "react-router-dom";
 
 
@@ -22,7 +21,7 @@ function App() {
     setalert({ msg: message, type: type })
     setTimeout(() => {
       setalert(null);
-    }, 2000);
+    }, 3000);
   }
 
   const toggleMode = () => {
@@ -47,9 +46,13 @@ function App() {
         <Routes>
             <Route path="/about" element={<About mode={mode} toggleMode={toggleMode}/>}/>
             <Route path="/" element={<TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />}/>
+
+            <Route path="/contact" element={<Contact mode={mode} toggleMode={toggleMode}/>}/>
+    
           </Routes>
 
         </div>
+        
       </Router>
     </>
   );

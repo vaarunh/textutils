@@ -40,3 +40,13 @@
 .blank{
   color: blue;
 }
+
+h2, label, Link{
+  font-family: 'poppins';
+  font-weight: 600;
+}
+
+div{
+  font-family: 'poppins';
+  font-weight: 400;
+}

@@ -45,7 +45,7 @@ function App() {
         <Alert className="mt-4" alert={alert} />
         <Routes>
             <Route path="/about" element={<About mode={mode} toggleMode={toggleMode}/>}/>
-            <Route path="/" element={<TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />}/>
+            <Route path="/" element={<TextForm heading="Enter Text to Analyze"  mode={mode} showAlert={showAlert} />}/>
 
             <Route path="/contact" element={<Contact mode={mode} toggleMode={toggleMode}/>}/>
     
